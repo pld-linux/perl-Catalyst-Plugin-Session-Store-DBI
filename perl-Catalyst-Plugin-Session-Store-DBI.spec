@@ -6,7 +6,7 @@
 %define	pdir	Catalyst
 %define	pnam	Plugin-Session-Store-DBI
 Summary:	Catalyst::Plugin::Session::Store::DBI - Store your sessions in a database
-#Summary(pl):	
+Summary(pl):	Catalyst::Plugin::Session::Store::DBI - przechowywanie sesji w bazie danych
 Name:		perl-Catalyst-Plugin-Session-Store-DBI
 Version:	0.01
 Release:	1
@@ -15,6 +15,7 @@ License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
 # Source0-md5:	28d43648469ae8d85a988ceda1c57deb
+URL:		http://search.cpan.org/dist/Catalyst-Plugin-Session-Store-DBI/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
@@ -28,8 +29,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 This storage module will store session data in a database using DBI.
 
-# %description -l pl
-# TODO
+%description -l pl
+Ten modu³ przechowuje dane sesji w bazie danych przy u¿yciu DBI.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
