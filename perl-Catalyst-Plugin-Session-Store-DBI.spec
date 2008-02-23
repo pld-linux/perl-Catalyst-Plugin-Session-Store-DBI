@@ -8,15 +8,14 @@
 Summary:	Catalyst::Plugin::Session::Store::DBI - Store your sessions in a database
 Summary(pl.UTF-8):	Catalyst::Plugin::Session::Store::DBI - przechowywanie sesji w bazie danych
 Name:		perl-Catalyst-Plugin-Session-Store-DBI
-Version:	0.11
+Version:	0.12
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/Catalyst/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	0633ec656058159b5d80f9fda8ce7c58
+# Source0-md5:	4fe382b91ee61fb6047a4138b42b34d3
 URL:		http://search.cpan.org/dist/Catalyst-Plugin-Session-Store-DBI/
-BuildRequires:	perl-Module-Build
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
@@ -37,17 +36,18 @@ Ten moduł przechowuje dane sesji w bazie danych przy użyciu DBI.
 %setup -q -n %{pdir}-%{pnam}-%{version}
 
 %build
-%{__perl} Build.PL \
-	destdir=$RPM_BUILD_ROOT \
-	installdirs=vendor
-./Build
+%{__perl} -MExtUtils::MakeMaker -we 'WriteMakefile(NAME=>"Catalyst::Plugin::Session::Store::DBI")' \
+	INSTALLDIRS=vendor
+%{__make}
 
-%{?with_tests:./Build test}
+%{?with_tests:%{__make} test}
+
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-./Build install
+%{__make} pure_install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
