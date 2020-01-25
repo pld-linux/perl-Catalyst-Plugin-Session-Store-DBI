@@ -2,7 +2,6 @@
 # Conditional build:
 %bcond_with	tests		# perform "make test"
 #
-%include	/usr/lib/rpm/macros.perl
 %define	pdir	Catalyst
 %define	pnam	Plugin-Session-Store-DBI
 Summary:	Catalyst::Plugin::Session::Store::DBI - Store your sessions in a database
